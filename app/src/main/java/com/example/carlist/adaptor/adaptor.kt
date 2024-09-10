@@ -39,7 +39,7 @@ class adptor (private val carList:ArrayList<Cars>): RecyclerView.Adapter<adptor.
         holder.itemView.setOnClickListener {
             onClick?.invoke(carList[position])
         }
-        holder.itemView.setOnClickListener{
+        holder.itemView.setOnLongClickListener{
             AlertDialog.Builder(holder.itemView.context)
                 .setTitle("detete car item")
                 .setMessage("Are you sure you want to delete this item?")
