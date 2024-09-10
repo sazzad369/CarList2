@@ -14,14 +14,14 @@ class DetailActivity : AppCompatActivity() {
         val name = intent.getStringExtra("Name")
         val Year = intent.getIntExtra("year", 0)
         val price = intent.getDoubleExtra("Price", 0.0)
-        val Description = intent.getStringExtra("Descriptiom")
+        val Description = intent.getStringExtra("Description")
         val image = intent.getIntExtra("Image", 0)
 
         binding.apply {
             carNametv.text = name
             yeartv2.text = Year.toString()
             pricetv3.text = price.toString()
-            carDesc4.text = Description
+            carDesc5.text = Description
             carimg.setImageResource(image)
         }
     }

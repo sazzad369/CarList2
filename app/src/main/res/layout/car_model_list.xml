@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:background="#DAA8A8">
+        android:background="#CAB4B4">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/circleImg"
@@ -52,11 +52,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:gravity="end"
+            android:gravity="center"
             android:text="Year : 1990s"
             android:textColor="@color/black"
             android:textSize="15dp"
-            android:textStyle="bold"
+            android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="@+id/nametv1"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/nametv1"

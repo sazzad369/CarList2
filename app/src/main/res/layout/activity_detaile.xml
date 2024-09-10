@@ -37,7 +37,8 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/img" />
+                    android:src="@drawable/img"
+                    app:civ_border_width="2dp"/>
             </androidx.cardview.widget.CardView>
 
             <TextView
@@ -86,10 +87,10 @@
                 app:layout_constraintTop_toBottomOf="@+id/yeartv2" />
 
             <TextView
-                android:id="@+id/carDesc4"
+                android:id="@+id/carDesc5"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="64dp"
                 android:text="Description: Classic compact executive car, known for its sporty handling and iconic design."
                 android:textColor="@color/black"
                 android:textSize="15dp"
@@ -105,10 +106,10 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/carDesc4"
+                app:layout_constraintEnd_toEndOf="@+id/carDesc5"
                 app:layout_constraintHorizontal_bias="20"
-                app:layout_constraintStart_toStartOf="@+id/carDesc4"
-                app:layout_constraintTop_toBottomOf="@+id/carDesc4"
+                app:layout_constraintStart_toStartOf="@+id/carDesc5"
+                app:layout_constraintTop_toBottomOf="@+id/carDesc5"
                 app:layout_constraintVertical_bias="0.0">
             <TextView
                 android:id="@+id/carDesc"

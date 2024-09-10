@@ -1,5 +1,6 @@
 package com.example.carlist.adaptor
 
+import android.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -37,6 +38,18 @@ class adptor (private val carList:ArrayList<Cars>): RecyclerView.Adapter<adptor.
         }
         holder.itemView.setOnClickListener {
             onClick?.invoke(carList[position])
+        }
+        holder.itemView.setOnClickListener{
+            AlertDialog.Builder(holder.itemView.context)
+                .setTitle("detete car item")
+                .setMessage("Are you sure you want to delete this item?")
+                .setPositiveButton("Yes") { _,_ ->
+                    carList.removeAt(position)
+                    notifyItemRemoved(position)
+                }
+                .setNegativeButton("No", null)
+                .show()
+            true
         }
     }
 

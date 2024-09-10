@@ -2,9 +2,14 @@ package com.example.carlist
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.ItemTouchHelper.SimpleCallback
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.carlist.adaptor.adptor
 import com.example.carlist.databinding.ActivityMainBinding
 import com.example.carlist.databinding.AddCarModelBinding
@@ -212,22 +217,45 @@ class MainActivity : AppCompatActivity() {
         binding.floatingActionButton.setOnClickListener {
             showCarAddDialog()
         }
+        val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(
+            0,
+            ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
+        ){
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return false
+            }
 
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                Car.removeAt(viewHolder.adapterPosition)
+                carAdapter.notifyItemRemoved(viewHolder.adapterPosition)
+
+            }
+        })
+        itemTouchHelper.attachToRecyclerView(binding.carRv)
     }
 
     private fun showCarAddDialog() {
-        val dialogview = AddCarModelBinding.inflate (layoutInflater)
+        val dialogview = LayoutInflater.from(this).inflate(R.layout.add_car_model, null)
+        val nameEt = dialogview.findViewById<EditText>(R.id.modelName)
+        val yearEt = dialogview.findViewById<EditText>(R.id.EnterYear)
+        val priceEt = dialogview.findViewById<EditText>(R.id.Enterprice)
+        val DescEt = dialogview.findViewById<EditText>(R.id.EnterDesc)
+        val imageEt = R.drawable.img
 
         AlertDialog.Builder(this)
             .setTitle("Add Cars")
-            .setView(dialogview.root)
+            .setView(dialogview)
             .setPositiveButton("Add") { _, _ ->
-                val name = dialogview.modelName.text.toString()
-                val year = dialogview.EnterYear.text.toString()
-                val price = dialogview.Enterprice.text.toString().toDouble()
-                val description = dialogview.EnterDesc.text.toString()
+                val name = nameEt.text.toString()
+                val year = yearEt.text.toString()
+                val price = priceEt.text.toString().toDouble()
+                val Desc = DescEt.text.toString()
                 val image = R.drawable.img
-                Car.add(Cars(name, year , price, description, image))
+                Car.add(Cars(name, year.toInt() , price, Desc , image))
                 carAdapter.notifyItemInserted(Car.size - 1)
 
             }
